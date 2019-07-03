@@ -1,0 +1,36 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yun6?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    password: root
+    username: root
+  redis:
+    host: 192.168.150.131
+
+#  rabbitmq:
+#    host: 192.168.150.131
+#    username: leyou
+#    password: leyou
+#    virtual-host: /leyou
+mybatis:
+  type-aliases-package: com.leyou.user.pojo
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: 127.0.0.1
+
+ly:
+  user:
+    exChange: ly.sms.exchange
+    routingKey: sms.verify.code
+    timeOut: 5
+

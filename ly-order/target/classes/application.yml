@@ -1,0 +1,39 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yun6?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    password: root
+    username: root
+  jackson:
+    default-property-inclusion: non_null
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+
+mybatis:
+  type-aliases-package: com.leyou.order.pojo
+
+ly:
+  jwt:
+    pubKeyPath: F:\tmp\rsarsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  pay:
+    appId: wx8397f8696b538317
+    mchId: 1473426802
+    key: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+    httpConnectTimeoutMs: 5000
+    httpReadTimeoutMs: 10000
+    notifyUrl:  http://dg4zi2.natappfree.cc/notify/pay
+  worker:
+    workerId: 1
+    datacenterId: 1

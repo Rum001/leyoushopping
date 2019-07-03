@@ -1,0 +1,53 @@
+server:
+  port: 10010
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 50000  #5s
+zuul:
+  prefix: /api #添加路由前缀
+  routes:
+    item-service: /item/** #将商品的微服务映射到/item/**
+    search-service: /search/**
+    user-service: /user/**
+    auth-service: /auth/**
+    cart-service: /cart/**
+    upload-service:
+      path: /upload/**
+      serviceId: upload-service
+      strip-prefix: false
+  add-host-header: true
+  sensitive-headers: #设置敏感头信息为空
+spring:
+  application:
+    name: api-gateway
+
+ribbon:
+  ConnectTimeout: 1000 #ribbon的连接超时时长
+  ReadTimeout: 3500 #bibbon的读取超时时长
+  MaxAutoRetries: 0 #但前服务的重试次数
+  MaxAutoRetriesNextServer: 0 #切换重试的次数
+
+ly:
+  jwt:
+    pubKeyPath: F:\tmp\rsarsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  filter:
+    allowPath:
+      - /api/auth
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/user/query
+      - /api/item
+      - /api/search
+      - /api/cart
+      - /api/order
