@@ -32,7 +32,7 @@
         <!--<spring-cloud.version>Finchley.SR1</spring-cloud.version>-->
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <mapper.starter.version>2.0.3</mapper.starter.version>
-        <mysql.version>5.1.46</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <pageHepler.starter.version>1.2.5</pageHepler.starter.version>
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
     </properties>
